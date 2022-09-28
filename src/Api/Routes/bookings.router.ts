@@ -1,3 +1,4 @@
+import { BookingRepository } from './../../AccessData/Repositories/booking.repository';
 import { Router, Request, Response, NextFunction } from 'express';
 
 export default class BookingRouter {
@@ -9,7 +10,11 @@ export default class BookingRouter {
 
   createRoutes = {
     get: () => {
-      this.router.get("/", (req: Request, res: Response, next: NextFunction) => {
+      this.router.get("/", async (req: Request, res: Response, next: NextFunction) => {
+        const bookingRepository  = new BookingRepository();
+    await bookingRepository.create({capacidad: "string",
+      precio: "string",
+      estado: "string"});
         res.send("getBooking");
         next();
       });
