@@ -18,6 +18,10 @@ export default class Server {
     this.app.use(appRouter);
   }
 
+  getApp (): Express {
+    return this.app;
+  }
+
   midleware (): void {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: false }));
