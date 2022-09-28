@@ -3,12 +3,23 @@ import * as bodyParser from 'body-parser';
 
 import { Express } from 'express';
 
+import { appRouter } from '../Api/';
+
 export default class Server {
   private readonly app: Express;
 
   constructor () {
     this.app = express();
     this.midleware();
+    this.getRouter();
+  }
+
+  getRouter (): void {
+    this.app.use(appRouter);
+  }
+
+  getApp (): Express {
+    return this.app;
   }
 
   midleware (): void {
