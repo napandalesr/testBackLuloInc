@@ -25,8 +25,9 @@ export default class RoomRouter {
     },
     put: () => {
       this.router.put("/", async (req: Request, res: Response, next: NextFunction) => {
-        const response = await this.room.create(req.body);
-        res.status(response.status).json(response);
+        const response = await this.room.update(req.body);
+        
+        res.json(response);
         next();
       });
     }
@@ -35,6 +36,7 @@ export default class RoomRouter {
   getRouter (): Router {
     this.createRoutes.get();
     this.createRoutes.post();
+    this.createRoutes.put();
     return this.router;
   }
 }

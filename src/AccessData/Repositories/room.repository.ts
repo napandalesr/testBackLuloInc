@@ -24,11 +24,12 @@ export class RoomRepository implements IPortRoomDataAccess {
   }
 
   async update(roomUdateModel:RoomUdateModel): Promise<RoomUdateModel> {
-    const roomToUpdate = await AppDataSource.getRepository(RoomUdateModel).findOneBy({
+    
+    const roomToUpdate = await AppDataSource.getRepository(Room).findOneBy({
       codigo: roomUdateModel.codigo,
     });
     roomToUpdate.estado = roomUdateModel.estado;
-
+    
     try {
       await AppDataSource.manager.save(roomToUpdate);
     } catch (error) {
