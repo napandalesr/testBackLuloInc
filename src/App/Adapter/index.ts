@@ -1,13 +1,13 @@
-import { IPortDataAccess } from '../../AccessData/Ports';
-import { BookingDto } from '../Controller/Booking/dto';
+import { IPortRoomDataAccess } from '../../AccessData/Ports';
+import { RoomDto } from '../Controller/Room/dto/room.dto';
 
-export class BookingAdapter {
-  constructor (private readonly bookingRepository: IPortDataAccess) {}
-  async create (bookingDto: BookingDto): Promise<void> {
-    return this.bookingRepository.create(bookingDto);
+export class RoomAdapter {
+  constructor (private readonly roomRepository: IPortRoomDataAccess) {}
+  async create (roomDto: RoomDto): Promise<void> {
+    return this.roomRepository.create(roomDto);
   }
 
   async get (): Promise<any> {
-    return await this.bookingRepository.get();
+    return await this.roomRepository.get();
   }
 }
