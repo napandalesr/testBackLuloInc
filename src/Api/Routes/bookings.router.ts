@@ -1,4 +1,4 @@
-import { BookingRepository } from './../../AccessData/Repositories/booking.repository';
+import { BookingRepository } from '../../AccessData/Repositories/room.repository';
 import { Router, Request, Response, NextFunction } from 'express';
 
 export default class BookingRouter {

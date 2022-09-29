@@ -1,4 +1,4 @@
-import { BookingDto } from './dto/index';
+/*import { BookingDto } from './dto/index';
 import { BookingController } from './Booking.controller';
 import { ValidationError } from 'class-validator';
 
@@ -54,4 +54,4 @@ describe("Validaciones del controlador", () => {
     expect("estado").toBe(data[1]["property"]);
     expect("estado must be longer than or equal to 4 characters").toBe(data[1]["isLength"]);
   });
-})
+})*/

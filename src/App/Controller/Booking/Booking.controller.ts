@@ -1,6 +1,6 @@
 import { BookingDto } from './dto';
 import { IResponse } from './../../../interfaces/Response';
-import { BookingRepository } from '../../../AccessData/Repositories/booking.repository';
+import { BookingRepository } from '../../../AccessData/Repositories/room.repository';
 import { BookingAdapter } from '../../Adapter';
 
 export class BookingController {
