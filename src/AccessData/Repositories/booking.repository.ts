@@ -1,8 +1,9 @@
 import { BookingModel } from './Model';
 import { AppDataSource } from '../../Config/DB';
 import { BookingEntity } from './Entity';
+import { IPortDataAccess } from '../Ports';
 
-export class BookingRepository {
+export class BookingRepository implements IPortDataAccess{
   async create (bookingModel: BookingModel): Promise<number> {
     const bookingEntity = new BookingEntity();
     bookingEntity.capacidad = bookingModel.capacidad;
