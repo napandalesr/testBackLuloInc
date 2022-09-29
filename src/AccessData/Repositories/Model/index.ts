@@ -1,5 +1,5 @@
 export class BookingModel {
-  capacidad: string;
+  capacidad: number;
   precio: string;
   estado: string
 }

@@ -36,4 +36,22 @@ describe("Validaciones del controlador", () => {
     expect("estado").toBe(data[1]["property"]);
     expect("estado must be longer than or equal to 4 characters").toBe(data[1]["isLength"]);
   });
+
+  test("Validación de datos de reserva incorrecta tipos de datos incorrectos en la capacidad y el estado", async () => {
+    const bookingController = new BookingController();
+    const booking = {
+      capacidad: 2,
+      precio: "1000",
+      estado: "res",
+      vatidation: function (bookingDto: BookingDto): Promise<ValidationError[]> {
+        throw new Error('Function not implemented.');
+      }
+    }
+    const {status, data} = await bookingController.create(booking);
+    expect(status).toBe(400);
+    expect("precio").toBe(data[0]["property"]);
+    expect("precio must be longer than or equal to 5 characters").toBe(data[0]["isLength"]);
+    expect("estado").toBe(data[1]["property"]);
+    expect("estado must be longer than or equal to 4 characters").toBe(data[1]["isLength"]);
+  });
 })
