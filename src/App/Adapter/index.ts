@@ -10,4 +10,8 @@ export class RoomAdapter {
   async get (): Promise<any> {
     return await this.roomRepository.get();
   }
+
+  async update (codigo:number, newState: string): Promise<any> {
+    return await this.roomRepository.update(codigo, newState);
+  }
 }

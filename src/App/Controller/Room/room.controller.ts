@@ -21,4 +21,9 @@ export class RoomController implements IRoom {
     const roomAdapter = new RoomAdapter(new RoomRepository());
     return await roomAdapter.get();
   }
+
+  async update(codigo: number, newState: string): Promise<RoomDto>{
+    const roomAdapter = new RoomAdapter(new RoomRepository());
+    return await roomAdapter.update(codigo, newState);
+  };
 }
