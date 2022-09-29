@@ -10,6 +10,7 @@ describe("Pruebas repositorio para gestionar habitaciones", () => {
       estado: "disponible",
       precio: "50.000"
     }
+    
     const codigo = await roomRepository.create(roomModel);
     expect(codigo).toBe(1000);
   });
