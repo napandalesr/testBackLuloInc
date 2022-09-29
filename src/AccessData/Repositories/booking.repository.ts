@@ -1,24 +1,18 @@
-import { BookingModel } from './Model';
+import { BookingModel } from './Model/booking.model';
 import { AppDataSource } from '../../Config/DB';
-import { BookingEntity } from './Entity';
-import { IPortDataAccess } from '../Ports';
+import { IPortBookingDataAccess } from '../Ports';
+import { BookingEntity } from './Entity/booking.entity';
 
-export class BookingRepository implements IPortDataAccess{
+export class BookingRepository implements IPortBookingDataAccess {
   async create (bookingModel: BookingModel): Promise<number> {
     const bookingEntity = new BookingEntity();
-    bookingEntity.capacidad = bookingModel.capacidad;
-    bookingEntity.precio = bookingModel.precio;
-    bookingEntity.estado = bookingModel.estado;
+    bookingEntity.codigo = bookingModel.codigo;
+    bookingEntity.nombre = bookingModel.nombre;
     try {
       await AppDataSource.manager.save(bookingEntity);
     } catch (error) {
       console.log(error);
     }
     return bookingEntity.codigo;
-  }
-
-  async get(): Promise<BookingEntity[]> {
-    const bookingRepository = AppDataSource.getRepository(BookingEntity);
-    return await bookingRepository.find();
   }
 }
