@@ -1,18 +1,23 @@
-import { Length, IsEmail, validate, ValidationError, IsString } from 'class-validator';
+import { Length, IsEmail, validate, ValidationError, IsString, IsNumber } from 'class-validator';
 
 export class BookingDto {
-  @Length(3, 15)
-  @IsString()
-    name: string;
+  @Length(1, 2)
+  @IsNumber()
+    capacidad: string;
 
-  @Length(7, 50)
-  @IsEmail()
-    email: string;
+  @Length(5, 7)
+  @IsString()
+    precio: string;
+
+  @Length(5, 7)
+  @IsString()
+    estado: string;
 
   async vatidation (bookingDto: BookingDto): Promise<ValidationError[]> {
     const user = new BookingDto();
-    user.name = bookingDto.name;
-    user.email = bookingDto.email;
+    user.capacidad = bookingDto.capacidad;
+    user.precio = bookingDto.precio;
+    user.estado = user.estado;
     return await validate(user).then(errors => {
       const err = [];
       if (errors.length > 0) {
