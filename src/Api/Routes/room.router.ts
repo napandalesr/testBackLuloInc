@@ -1,27 +1,24 @@
-import { BookingRepository } from '../../AccessData/Repositories/room.repository';
 import { Router, Request, Response, NextFunction } from 'express';
+import { IRoom } from '../../App/Ports';
 
-export default class BookingRouter {
+export default class RoomRouter {
   private readonly router: Router;
 
-  constructor () {
+  constructor (private readonly room: IRoom) {
     this.router = Router();
   }
 
   createRoutes = {
     get: () => {
       this.router.get("/", async (req: Request, res: Response, next: NextFunction) => {
-        const bookingRepository  = new BookingRepository();
-    await bookingRepository.create({capacidad: 2,
-      precio: "string",
-      estado: "string"});
         res.send("getBooking");
         next();
       });
     },
     post: () => {
       this.router.post("/", async (req: Request, res: Response, next: NextFunction) => {
-        res.send("postBooking");
+        const response = await this.room.create(req.body);
+        res.status(response.status).json(response);
         next();
       });
     }

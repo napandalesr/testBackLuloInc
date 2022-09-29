@@ -1,10 +1,11 @@
+import { RoomController } from './../App/Controller/Room/room.controller';
 
 import * as express from 'express';
-import BookingRouter from './Routes/bookings.router';
+import RoomRouter from './Routes/room.router';
 
 const appRouter = express();
 
-const bookingRouter = new BookingRouter().getRouter();
-appRouter.use("/booking", bookingRouter);
+const roomRouter = new RoomRouter(new RoomController).getRouter();
+appRouter.use("/room", roomRouter);
 
 export { appRouter };
