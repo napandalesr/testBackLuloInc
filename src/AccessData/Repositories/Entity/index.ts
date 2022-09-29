@@ -6,7 +6,7 @@ export class BookingEntity {
     codigo: number;
 
   @Column()
-    capacidad: string;
+    capacidad: number;
 
   @Column()
     precio: string;

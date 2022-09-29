@@ -12,7 +12,7 @@ export default class BookingRouter {
     get: () => {
       this.router.get("/", async (req: Request, res: Response, next: NextFunction) => {
         const bookingRepository  = new BookingRepository();
-    await bookingRepository.create({capacidad: "string",
+    await bookingRepository.create({capacidad: 2,
       precio: "string",
       estado: "string"});
         res.send("getBooking");
