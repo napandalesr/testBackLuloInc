@@ -7,7 +7,6 @@ describe("Pruebas repositorio para gestionar habitaciones", () => {
     const roomRepository = new RoomRepository();
     const roomModel: RoomModel = {
       capacidad: 2,
-      codigo: 1000,
       estado: "disponible",
       precio: "50.000"
     }

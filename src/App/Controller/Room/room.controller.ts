@@ -2,8 +2,9 @@ import { RoomDto } from './dto/room.dto';
 import { IResponse } from '../../../interfaces/Response';
 import { RoomRepository } from '../../../AccessData/Repositories/room.repository';
 import { RoomAdapter } from '../../Adapter';
+import { IRoom } from '../../Ports';
 
-export class RoomController {
+export class RoomController implements IRoom {
   async create (roomDto: RoomDto): Promise<IResponse>  {
     const validateDto = new RoomDto();
     
@@ -14,5 +15,10 @@ export class RoomController {
     const roomAdapter = new RoomAdapter(new RoomRepository());
     const codigo = await roomAdapter.create(roomDto);
     return { status: 200, data: { codigo: codigo, ...roomDto } };
+  }
+
+  async get(): Promise<RoomDto[]>{
+    const roomAdapter = new RoomAdapter(new RoomRepository());
+    return await roomAdapter.get();
   }
 }

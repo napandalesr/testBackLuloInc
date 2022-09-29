@@ -2,9 +2,6 @@ import { Length, validate, ValidationError, IsString, IsInt, IsNumber } from 'cl
 
 export class RoomDto {
   @IsInt()
-    codigo: number;
-    
-  @IsInt()
     capacidad: number;
 
   @Length(5, 7)
@@ -17,7 +14,6 @@ export class RoomDto {
 
   async vatidation (roomDto: RoomDto): Promise<ValidationError[]> {
     const room = new RoomDto();
-    room.codigo = roomDto.codigo;
     room.capacidad = roomDto.capacidad;
     room.precio = roomDto.precio;
     room.estado = roomDto.estado;
