@@ -1,19 +1,16 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { BookingEntity } from "./booking.entity";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class RoomEntity {
+export class Room {
   @PrimaryGeneratedColumn()
     codigo: number;
 
-  @Column()
+  @Column("int")
     capacidad: number;
 
-  @Column()
+  @Column("text")
     precio: string;
 
-  @Column()
+  @Column("text")
     estado: string;
-
-  @OneToMany(type => BookingEntity, booking => booking.codigo) bookings: BookingEntity[];
 }

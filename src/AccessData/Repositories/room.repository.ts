@@ -1,11 +1,11 @@
 import { AppDataSource } from '../../Config/DB';
-import { RoomEntity } from './Entity/room.entity';
+import { Room } from './Entity/room.entity';
 import { IPortRoomDataAccess } from '../Ports';
 import { RoomModel } from './Model/room.model';
 
 export class RoomRepository implements IPortRoomDataAccess {
   async create (roomModel: RoomModel): Promise<number> {
-    const roomEntity = new RoomEntity();
+    const roomEntity = new Room();
     roomEntity.codigo = roomModel.codigo;
     roomEntity.capacidad = roomModel.capacidad;
     roomEntity.precio = roomModel.precio;
@@ -18,8 +18,8 @@ export class RoomRepository implements IPortRoomDataAccess {
     return roomEntity.codigo;
   }
 
-  async get(): Promise<RoomEntity[]> {
-    const roomRepository = AppDataSource.getRepository(RoomEntity);
+  async get(): Promise<Room[]> {
+    const roomRepository = AppDataSource.getRepository(Room);
     return await roomRepository.find();
   }
 }

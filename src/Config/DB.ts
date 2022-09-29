@@ -1,8 +1,8 @@
-import { RoomEntity } from '../AccessData/Repositories/Entity/room.entity';
 import "reflect-metadata";
 import { DataSource } from 'typeorm';
+import { Room } from '../AccessData/Repositories/Entity/room.entity';
 import * as dotenv from "dotenv";
-import { BookingEntity } from '../AccessData/Repositories/Entity/booking.entity';
+import { Booking } from '../AccessData/Repositories/Entity/booking.entity';
 
 
 dotenv.config();
@@ -21,7 +21,7 @@ const AppDataSource = new DataSource({
       rejectUnauthorized: false
     }
   },
-  entities: [RoomEntity,BookingEntity]
+  entities: [Room,Booking]
 });
 
 AppDataSource.initialize()
