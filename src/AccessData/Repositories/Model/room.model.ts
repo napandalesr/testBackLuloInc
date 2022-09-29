@@ -3,3 +3,8 @@ export class RoomModel {
   precio: string;
   estado: string
 }
+
+export class RoomUdateModel {
+  codigo: number;
+  estado: string
+}

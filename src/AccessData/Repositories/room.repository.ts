@@ -1,7 +1,7 @@
 import { AppDataSource } from '../../Config/DB';
 import { Room } from './Entity/room.entity';
 import { IPortRoomDataAccess } from '../Ports';
-import { RoomModel } from './Model/room.model';
+import { RoomModel, RoomUdateModel } from './Model/room.model';
 
 export class RoomRepository implements IPortRoomDataAccess {
 
@@ -23,11 +23,11 @@ export class RoomRepository implements IPortRoomDataAccess {
     return await roomRepository.find();
   }
 
-  async update(codigo: number, newState:string): Promise<Room> {
-    const roomToUpdate = await AppDataSource.getRepository(Room).findOneBy({
-      codigo: codigo,
+  async update(roomUdateModel:RoomUdateModel): Promise<RoomUdateModel> {
+    const roomToUpdate = await AppDataSource.getRepository(RoomUdateModel).findOneBy({
+      codigo: roomUdateModel.codigo,
     });
-    roomToUpdate.estado = newState;
+    roomToUpdate.estado = roomUdateModel.estado;
 
     try {
       await AppDataSource.manager.save(roomToUpdate);
