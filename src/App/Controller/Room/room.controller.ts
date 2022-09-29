@@ -3,6 +3,7 @@ import { IResponse } from '../../../interfaces/Response';
 import { RoomRepository } from '../../../AccessData/Repositories/room.repository';
 import { RoomAdapter } from '../../Adapter';
 import { IRoom } from '../../Ports';
+import { RoomUpdateDto } from './dto/room.update.dto';
 
 export class RoomController implements IRoom {
   async create (roomDto: RoomDto): Promise<IResponse>  {
@@ -22,8 +23,8 @@ export class RoomController implements IRoom {
     return await roomAdapter.get();
   }
 
-  async update(codigo: number, newState: string): Promise<RoomDto>{
+  async update(roomUdpdateDto:RoomUpdateDto): Promise<RoomUpdateDto>{
     const roomAdapter = new RoomAdapter(new RoomRepository());
-    return await roomAdapter.update(codigo, newState);
+    return roomAdapter.update(roomUdpdateDto);
   };
 }

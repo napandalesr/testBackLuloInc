@@ -1,6 +1,6 @@
-import { Length, validate, ValidationError, IsString, IsInt, IsNumber } from 'class-validator';
+import { Length, validate, ValidationError, IsString, IsInt } from 'class-validator';
 
-export class RoomDto {
+export class RoomUpdateDto {
   @IsInt()
     codigo: number;
 
@@ -8,8 +8,8 @@ export class RoomDto {
   @IsString()
     estado: string;
 
-  async vatidation (roomDto: RoomDto): Promise<ValidationError[]> {
-    const room = new RoomDto();
+  async vatidation? (roomDto: RoomUpdateDto): Promise<ValidationError[]> {
+    const room = new RoomUpdateDto();
     room.codigo = roomDto.codigo;
     room.estado = roomDto.estado;
     return await validate(room).then(errors => {

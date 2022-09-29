@@ -1,3 +1,4 @@
+import { RoomUpdateDto } from './../Controller/Room/dto/room.update.dto';
 import { IPortRoomDataAccess } from '../../AccessData/Ports';
 import { RoomDto } from '../Controller/Room/dto/room.dto';
 
@@ -11,7 +12,8 @@ export class RoomAdapter {
     return await this.roomRepository.get();
   }
 
-  async update (codigo:number, newState: string): Promise<any> {
-    return await this.roomRepository.update(codigo, newState);
+  async update (roomUpdateDto:RoomUpdateDto): Promise<RoomUpdateDto> {
+    const { codigo ,estado} = roomUpdateDto;
+    return await this.roomRepository.update({codigo, estado});
   }
 }

@@ -22,6 +22,13 @@ export default class RoomRouter {
         res.status(response.status).json(response);
         next();
       });
+    },
+    put: () => {
+      this.router.put("/", async (req: Request, res: Response, next: NextFunction) => {
+        const response = await this.room.create(req.body);
+        res.status(response.status).json(response);
+        next();
+      });
     }
   };
 

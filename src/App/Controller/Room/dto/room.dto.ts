@@ -12,7 +12,7 @@ export class RoomDto {
   @IsString()
     estado: string;
 
-  async vatidation (roomDto: RoomDto): Promise<ValidationError[]> {
+  async vatidation? (roomDto: RoomDto): Promise<ValidationError[]> {
     const room = new RoomDto();
     room.capacidad = roomDto.capacidad;
     room.precio = roomDto.precio;
