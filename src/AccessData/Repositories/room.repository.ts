@@ -6,7 +6,6 @@ import { RoomModel } from './Model/room.model';
 export class RoomRepository implements IPortRoomDataAccess {
   async create (roomModel: RoomModel): Promise<number> {
     const roomEntity = new Room();
-    roomEntity.codigo = roomModel.codigo;
     roomEntity.capacidad = roomModel.capacidad;
     roomEntity.precio = roomModel.precio;
     roomEntity.estado = roomModel.estado;

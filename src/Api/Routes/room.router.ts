@@ -11,7 +11,8 @@ export default class RoomRouter {
   createRoutes = {
     get: () => {
       this.router.get("/", async (req: Request, res: Response, next: NextFunction) => {
-        res.send("getBooking");
+        const response = await this.room.get();
+        res.json(response);
         next();
       });
     },
