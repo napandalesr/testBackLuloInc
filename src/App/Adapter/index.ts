@@ -12,8 +12,12 @@ export class RoomAdapter {
     return await this.roomRepository.get();
   }
 
-  async update (roomUpdateDto:RoomUpdateDto): Promise<RoomUpdateDto> {
-    const { codigo ,estado} = roomUpdateDto;
-    return await this.roomRepository.update({codigo, estado});
+  async update (roomUpdateDto: RoomUpdateDto): Promise<RoomUpdateDto> {
+    const { codigo, estado } = roomUpdateDto;
+    return await this.roomRepository.update({ codigo, estado });
+  }
+
+  async findId (codigo:number): Promise<RoomDto> {
+    return this.roomRepository.findId(codigo);
   }
 }

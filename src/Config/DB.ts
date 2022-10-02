@@ -4,7 +4,6 @@ import { Room } from '../AccessData/Repositories/Entity/room.entity';
 import * as dotenv from "dotenv";
 import { Booking } from '../AccessData/Repositories/Entity/booking.entity';
 
-
 dotenv.config();
 
 const AppDataSource = new DataSource({
@@ -21,7 +20,7 @@ const AppDataSource = new DataSource({
       rejectUnauthorized: false
     }
   },
-  entities: [Room,Booking]
+  entities: [Room, Booking]
 });
 
 AppDataSource.initialize()

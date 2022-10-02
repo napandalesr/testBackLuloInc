@@ -1,4 +1,3 @@
-import { BookingRepository } from "./booking.repository";
 import { RoomModel } from "./Model/room.model";
 import { RoomRepository } from "./room.repository";
 
@@ -9,8 +8,8 @@ describe("Pruebas repositorio para gestionar habitaciones", () => {
       capacidad: 2,
       estado: "disponible",
       precio: "50.000"
-    }
+    };
     const codigo = await roomRepository.create(roomModel);
     expect(codigo).toBe(1000);
   });
-})
+});

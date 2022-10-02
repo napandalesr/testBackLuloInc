@@ -1,10 +1,10 @@
 export class RoomModel {
   capacidad: number;
   precio: string;
-  estado: string
+  estado: string;
 }
 
-export class RoomUdateModel {
+export class RoomUpdateModel {
   codigo: number;
-  estado: string
+  estado: string;
 }

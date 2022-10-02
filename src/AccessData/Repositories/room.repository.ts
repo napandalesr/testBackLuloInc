@@ -1,10 +1,11 @@
 import { AppDataSource } from '../../Config/DB';
 import { Room } from './Entity/room.entity';
 import { IPortRoomDataAccess } from '../Ports';
-import { RoomModel, RoomUdateModel } from './Model/room.model';
+import { RoomModel, RoomUpdateModel } from './Model/room.model';
+import { BookingRepository } from './booking.repository';
+import { Booking } from './Entity/booking.entity';
 
 export class RoomRepository implements IPortRoomDataAccess {
-
   async create (roomModel: RoomModel): Promise<number> {
     const roomEntity = new Room();
     roomEntity.capacidad = roomModel.capacidad;
@@ -15,25 +16,50 @@ export class RoomRepository implements IPortRoomDataAccess {
     } catch (error) {
       console.log(error);
     }
-    return roomEntity.codigo;
+    return roomEntity.id;
   }
 
-  async get(): Promise<Room[]> {
+  async get (): Promise<Room[]> {
     const roomRepository = AppDataSource.getRepository(Room);
     return await roomRepository.find();
   }
 
-  async update(roomUdateModel:RoomUdateModel): Promise<RoomUdateModel> {
-    const roomToUpdate = await AppDataSource.getRepository(RoomUdateModel).findOneBy({
-      codigo: roomUdateModel.codigo,
+  async update (roomUpdateModel: RoomUpdateModel): Promise<RoomUpdateModel> {
+    const roomToUpdate:Room = await AppDataSource.getRepository(Room).findOneBy({
+      id: roomUpdateModel.codigo
     });
-    roomToUpdate.estado = roomUdateModel.estado;
+    roomToUpdate.estado = roomUpdateModel.estado;
 
     try {
       await AppDataSource.manager.save(roomToUpdate);
     } catch (error) {
       console.log(error);
     }
-    return roomToUpdate;
+    return roomUpdateModel;
+  }
+
+  async updateBooking (bookingEntity: Booking, codigo: number): Promise<void> {
+    const room = await AppDataSource.getRepository(Room).findOne({
+      where: {
+        id: codigo
+      }
+    })
+    room.codigo = [bookingEntity]
+    await AppDataSource.manager.save(room);
+  }
+
+  async findId (codigo: number): Promise<Room> {
+    const room = await AppDataSource.getRepository(Room).findOne({
+      where: {
+        id: codigo
+      },
+      relations: {
+        codigo: true
+      }
+    });
+    console.log("room",room);
+    
+    
+    return room;
   }
 }
