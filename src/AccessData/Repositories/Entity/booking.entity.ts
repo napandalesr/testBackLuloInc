@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Room } from "./room.entity";
 
 @Entity()
@@ -9,8 +9,9 @@ export class Booking {
   @Column("text")
     nombre: string;
 
-  @Column("int")
-    codigo: number;
+  @Column("text")
+    fechaIngreso: string;
 
-  @ManyToOne(type => Room, room => room.codigo) room: Room;
+  @Column("text")
+    fechaSalida: string;
 }

@@ -1,4 +1,4 @@
-import { Length, validate, ValidationError, IsString, IsInt, IsNumber } from 'class-validator';
+import { Length, validate, ValidationError, IsString, IsInt } from 'class-validator';
 
 export class RoomDto {
   @IsInt()

@@ -1,10 +1,10 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Booking } from "./booking.entity";
 
 @Entity()
 export class Room {
   @PrimaryGeneratedColumn()
-    codigo: number;
+    id?: number;
 
   @Column("int")
     capacidad: number;
@@ -15,5 +15,7 @@ export class Room {
   @Column("text")
     estado: string;
 
-  @OneToMany(type => Booking, booking => booking.codigo) bookings: Booking[];
+  @ManyToMany(() => Booking)
+  @JoinTable({ name: "codigo_booking" })
+      codigo: any[];
 }

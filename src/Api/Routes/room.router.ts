@@ -29,12 +29,19 @@ export default class RoomRouter {
         res.status(response.status).json(response);
         next();
       });
+    },
+    postId: ()=> {
+      this.router.post("/id", async (req: Request, res: Response, next: NextFunction) => {
+        res.json(await this.room.findId(req.body.codigo));
+      })
     }
   };
 
   getRouter (): Router {
     this.createRoutes.get();
     this.createRoutes.post();
+    this.createRoutes.put();
+    this.createRoutes.postId();
     return this.router;
   }
 }
