@@ -2,7 +2,7 @@
 ## NPM VERSION: 8.1.0
 ## YARN VERSION: 1.22.18
 
-**GIT COMMIT
+**GIT COMMIT**
 
 #### feat:     Una nueva característica.
 #### fix:      Una corrección de errores.
